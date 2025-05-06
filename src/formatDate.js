@@ -11,10 +11,17 @@ function formatDate(date, fromFormat, toFormat) {
   let year = '';
   let month = '';
   let day = '';
-  const separator = fromFormat[3];
+  let separator = '';
+
+  for (const char of date) {
+    if (char < '0' || char > '9') {
+      separator = char;
+      break;
+    }
+  }
 
   let newDate = '';
-  const newSeparator = toFormat[3];
+  const newSeparator = toFormat[toFormat.length - 1];
 
   const dateArray = date.split(separator);
 
