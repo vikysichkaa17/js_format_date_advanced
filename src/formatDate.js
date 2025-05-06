@@ -21,7 +21,13 @@ function formatDate(date, fromFormat, toFormat) {
   }
 
   let newDate = '';
-  const newSeparator = toFormat[toFormat.length - 1];
+  let newSeparator = '';
+
+  for (const n of toFormat) {
+    if (n !== 'YYYY' && n !== 'YY' && n !== 'MM' && n !== 'DD') {
+      newSeparator = n;
+    }
+  }
 
   const dateArray = date.split(separator);
 
